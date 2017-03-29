@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listings</h1>
+
+<div class="listing-collection">
+  <% @listings.each do |listing| %>
+    <div class="listing-cell">
+      <%= image_tag listing.image %>
+      <h2><%= listing.name %></h2>
+      <p><%= listing.description %></p>
+      <p><%= listing.contact_info %></p>
+      <div class="listing-btn-group">
+        <%= link_to "View", listing, class: "btn" %>
+        <%= link_to "Edit", edit_listing_path(listing), class: "btn" %>
+        <%= link_to "Delete", listing, class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure" } %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<br>
+
+<%= link_to 'New Listing', new_listing_path, class: "btn" %>

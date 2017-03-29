@@ -1,0 +1,37 @@
+<%= form_for(listing) do |f| %>
+  <% if listing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
+
+      <ul>
+      <% listing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, placeholder: "Game name"  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description, placeholder: "Describe the game here..."  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contact_info %>
+    <%= f.text_area :contact_info, placeholder: "Tell people how to contact you..." %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.text_field :image, placeholder: "Put a link to a picture of the game here"  %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: "btn"  %>
+  </div>
+<% end %>

@@ -1,0 +1,35 @@
+// Place all the styles related to the Listings controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.listing-collection {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.listing-cell {
+  border: 1px solid #000;
+  flex-basis: 48%;
+  margin-bottom: 2rem;
+
+  img {
+    width: 100%;
+  }
+
+  h2, p {
+    padding: 0 1rem;
+  }
+}
+
+.listing-btn-group {
+  display: flex;
+  margin: 0 -0.25rem 2rem -0.25rem;;
+  padding: 0 1rem;
+
+  a {
+    margin: 0 0.25rem;
+  }
+}
