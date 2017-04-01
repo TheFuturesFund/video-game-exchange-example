@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Clone and cd into the repo
+git clone -b example https://github.com/TheFuturesFund/video-game-exchange-example.git video-game-exchange
+cd video-game-exchange
+
+# Install deps
+bundle install
+
+# Setup the database
+rails db:create
+rails db:migrate
+rails db:seed
