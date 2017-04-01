@@ -47,3 +47,28 @@ There's a command we need to run on our terminal so Devise can do its initial se
 ```shell
 rails generate devise:install
 ```
+
+# Setting up the user model
+
+Next, let's use Devise to generate a User model.
+
+```bash
+rails generate devise User
+```
+
+Once that is done, we'll need to migrate our database:
+
+```bash
+rails db:migrate
+```
+
+Now, let's fire up the server and checkout a few routes.
+Specifically, give these a try:
+
+- localhost:3000/users/sign_up
+- localhost:3000/users/sign_in
+
+
+
+
+
