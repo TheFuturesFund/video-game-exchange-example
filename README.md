@@ -68,7 +68,60 @@ Specifically, give these a try:
 - localhost:3000/users/sign_up
 - localhost:3000/users/sign_in
 
+# Adding links to the layout
 
+Now we can sign in, but to what end?
+Let's start making some things happen when you sign in.
 
+First, we'll add a some stuff to the application layout.
+If you are signed in, we'll want to tell the you who you are, and give you the option to sign out.
+When you're not signed in, we'll want to give you the option to sign in or sign up.
+
+Let's do this by adding the following to `app/views/layouts/application.html.erb`:
+
+```erb
+<div class="content">
+  <!-- New code starts here -->
+  <p>
+    <% if user_signed_in? %>
+      Signed in as <%= current_user.email %>.
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>.
+    <% else %>
+      Not signed in.
+      <%= link_to "Sign in", new_user_session_path %>
+      or
+      <%= link_to "sign up", new_user_registration_path %>.
+    <% end %>
+  </p>
+  <!-- New code stops here -->
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <%= yield %>
+</div>
+```
+
+# Restricting views
+
+This is great!
+We can sign in and sign up.
+But, notice that right now that doesn't actually do anything.
+If you sign in, you can still use the site.
+We want to require our users to sign in in order to user the site.
+We can do that by adding a `before_action` in `app/controller/listings_controller.rb`:
+
+```ruby
+class ListingsController < ApplicationController
+  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+
+  # lots of code down here...
+end
+```
+
+Now, if we try to use the app without signing in, we're redirected to the login screen where there is a message telling us that we must sign up before continuing.
+
+And that's it.
+It's really that easy.
+Now, if you want to go for bonus, try adding adding making the User model associated with the Listing model ;)
 
 
