@@ -13,5 +13,37 @@ Run this in the terminal:
 curl -sSL https://raw.githubusercontent.com/TheFuturesFund/video-game-exchange-example/master/bin/bootstrap | bash
 ```
 
-This will clone the app, cd into the directory, and create the database.
-At this point, you should be ready to use `rails server` and checkout the example app.
+This will clone the app and setup the database.
+Once it is done, `cd` into the app's directory:
+
+```shell
+cd video-game-exchange
+```
+
+At this point, you should be ready to use `rails server` and checkout the example app:
+
+```shell
+rails server -b 0.0.0.0
+```
+
+# Adding Devise
+
+[Devise](https://github.com/plataformatec/devise) is a gem that will give us the ability to make our users sign up or sign in before posting any listings.
+To start, let's add Devise to our `Gemfile` in our project's root:
+
+```ruby
+gem "devise"
+```
+
+Once the gem is added to the Gemfile, we need to install it:
+
+```shell
+bundle install
+```
+
+Now the gem is installed.
+There's a command we need to run on our terminal so Devise can do its initial setup:
+
+```shell
+rails generate devise:install
+```
